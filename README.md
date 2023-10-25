@@ -20,6 +20,9 @@
 - `docker-compose stop` # Стоп контейнеры
 - `docker-compose down` # Стоп и удалить контейнеры
 
+## Зайти в контейнер
+- docker exec -it php bash
+
 ## Адреса 
 - http://localhost:2095/ # главная страница index.php
 - PgAdmin
