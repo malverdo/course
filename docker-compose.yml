@@ -1,7 +1,7 @@
 version: '3'
 services:
   web:
-    container_name: nginx
+    container_name: course_nginx
     build:
       context: deployment/docker/${APP}/nginx
       dockerfile: Dockerfile
@@ -13,7 +13,7 @@ services:
     depends_on:
       - php
   php:
-    container_name: php
+    container_name: course_php
     build:
       context: deployment/docker/${APP}/php
       dockerfile: php-fpm.docker
@@ -24,7 +24,7 @@ services:
       - PHP_IDE_CONFIG=serverName=php
 
   postgres:
-    container_name: postgres
+    container_name: course_postgres
     build:
       context: deployment/docker/${APP}/postgres
       dockerfile: Dockerfile
@@ -39,6 +39,7 @@ services:
       - ./deployment/db/docker_postgres_init.sql:/docker-entrypoint-initdb.d/docker_postgres_init.sql
       - ./deployment/data/postgres-data:/var/lib/postgresql/data
   pgadmin:
+    container_name: course_pgadmin
     image: dpage/pgadmin4:7.8
     environment:
       PGADMIN_DEFAULT_EMAIL: "test@mail.ru"
